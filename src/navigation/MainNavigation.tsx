@@ -5,6 +5,7 @@ import { MainStackParamList} from 'types'
 import ProductList from '../screens/ProductList'
 import Basket from '../screens/Basket'
 import { LeftLogout, RightBasket } from '../components/ProductListHeader'
+import { brandColor } from '../constant'
 
 const MainStack = createNativeStackNavigator<MainStackParamList>()
 const MainNavigation = () => {
@@ -24,7 +25,11 @@ const MainNavigation = () => {
                         )
                     },
                     headerTitleAlign:'center',
-                    headerTitle:'Ürün Listesi'
+                    headerTitle:'Ürün Listesi',
+                    headerShadowVisible:false,
+                    headerTitleStyle:{
+                        color:brandColor
+                    }
                 }}
                 name='ProductList' 
                 component={ProductList}/>

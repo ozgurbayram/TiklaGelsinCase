@@ -28,7 +28,7 @@ export const LeftLogout = ()=>{
 }
 
 export const RightBasket = () =>{
-    const {navigation} = useNavigation<MainScreenProps>()
+    const navigation= useNavigation()
     const goToBasket =()=>{
         navigation.navigate('Basket')
     }
