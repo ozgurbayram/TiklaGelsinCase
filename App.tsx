@@ -1,10 +1,11 @@
-import { Text, View } from "react-native"
+import React from "react"
+import Navigation from "./src/navigation"
 
 const App = ()=>{
     return(
-        <View>
-            <Text>Hello World</Text>
-        </View>
+        <>
+            <Navigation/>
+        </>
     )
 }
 
