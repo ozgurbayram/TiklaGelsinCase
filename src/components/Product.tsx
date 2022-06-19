@@ -2,6 +2,7 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import AnimatedPressable from './AnimatedPressable'
 import VStack from './VStack'
+import { useBasket } from '../context/BasketContext'
 
 interface IProduct {
     id:number
@@ -10,6 +11,8 @@ interface IProduct {
     discount?:number
     ingredients:string[]
     image:string
+    isList?:boolean
+    count?:number
 }
 
 const Product = ({
@@ -19,14 +22,34 @@ const Product = ({
     image,
     discount,
     ingredients,
+    isList,
+    count
 }:IProduct) => {
-
+    const {basketState,basketDispatch} =useBasket()
     const addToBasket =()=>{
+        basketDispatch({type:'add',product:{
+            id,
+            name,
+            price,
+            image,
+            ingredients,
+            discount,
+            count:1
+        }})
     }
-
+    const increase = ()=>{
+        basketDispatch({type:'increase',id:id})
+    }
+    const decrease =()=>{
+        if(count==1){
+            basketDispatch({type:'remove',id:id})
+        }else{
+            basketDispatch({type:'decrease',id:id})
+        }
+    }
     return (
         <View style={styles.product}>
-            <VStack>
+            <View style={styles.left}>
                 <Image
                     source={{
                         uri:image,
@@ -39,17 +62,35 @@ const Product = ({
                     <Text style={styles.productName}>{name}</Text>
                     <Text style={styles.ingredients}>İçindekiler:{ingredients.join(',')}</Text>
                 </View>
-            </VStack>
-            <AnimatedPressable
-                onPress={()=>{
-                    addToBasket()
-                }}
-                style={styles.button}
-            >
-                <>
-                    <Text>{price}Tl Sepete Ekle</Text>
-                </>
-            </AnimatedPressable>
+            </View>
+            {isList?(
+                <AnimatedPressable
+                    onPress={()=>{
+                        addToBasket()
+                    }}
+                    style={styles.button}
+                >
+                    <>
+                        <Text>{price}Tl Sepete Ekle</Text>
+                    </>
+                </AnimatedPressable>
+            ):(
+                <View style={styles.count}>
+                    <AnimatedPressable
+                        onPress={increase}
+                        style={styles.countButton}
+                    >
+                        <Text>+</Text>
+                    </AnimatedPressable>
+                    <Text style={styles.countText}>{count} Adet</Text>
+                    <AnimatedPressable
+                        onPress={decrease}
+                        style={styles.countButton}
+                    >
+                        <Text>-</Text>
+                    </AnimatedPressable>
+                </View>
+            )}
         </View>
     )
 }
@@ -87,12 +128,30 @@ const styles = StyleSheet.create({
         padding:10,
         justifyContent:'space-between'
     },
-    count:{
-        fontSize:18,
-        color:'#fff',
-        paddingHorizontal:10
-    },
+    
     icon:{
         color:'#fff'
+    },
+    countButton:{
+        backgroundColor:'#fff',
+        padding:12,
+        borderRadius:80,
+    },
+    count:{
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between',
+        width:'30%',
+    },
+    countText:{
+        color:'#fff',
+        fontSize:16
+    },
+    left:{
+        width:'50%',
+        display:'flex',
+        flexDirection:'row',
+        alignItems:'center',
     }
 })

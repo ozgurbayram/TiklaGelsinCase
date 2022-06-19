@@ -1,10 +1,13 @@
 import React, { useContext } from "react"
-import { useReducer, useState } from "react"
+import { useReducer } from "react"
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 type Action = {type:'login',email:string} | {type:'logout'}
+
 type State ={
     user:{}|null
 }
+
 type Dispatch =(action:Action)=>void
 
 const UserContext = React.createContext<

@@ -33,7 +33,15 @@ const MainNavigation = () => {
                 }}
                 name='ProductList' 
                 component={ProductList}/>
-            <MainStack.Screen name="Basket" component={Basket}/>
+            <MainStack.Screen 
+                options={{
+                    headerTitleAlign:'center',
+                    headerTintColor:brandColor,
+                    headerShadowVisible:false,
+                    headerTitle:'Sepet'
+                }}
+                name="Basket"
+                component={Basket}/>
         </MainStack.Navigator>
     )
 }

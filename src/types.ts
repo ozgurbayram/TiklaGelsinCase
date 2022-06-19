@@ -19,4 +19,5 @@ export type Product = {
     image:string,
     discount:number,
     ingredients:string[],
+    count?:number
 }
