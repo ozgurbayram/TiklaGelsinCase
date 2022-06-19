@@ -4,13 +4,30 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { MainStackParamList} from 'types'
 import ProductList from '../screens/ProductList'
 import Basket from '../screens/Basket'
+import { LeftLogout, RightBasket } from '../components/ProductListHeader'
 
 const MainStack = createNativeStackNavigator<MainStackParamList>()
 const MainNavigation = () => {
     return (
         /* @ts-ignore */
         <MainStack.Navigator>
-            <MainStack.Screen name='ProductList' component={ProductList}/>
+            <MainStack.Screen 
+                options={{
+                    headerRight:()=>{
+                        return (
+                            <RightBasket/>
+                        )
+                    },
+                    headerLeft:()=>{
+                        return (
+                            <LeftLogout/>
+                        )
+                    },
+                    headerTitleAlign:'center',
+                    headerTitle:'Ürün Listesi'
+                }}
+                name='ProductList' 
+                component={ProductList}/>
             <MainStack.Screen name="Basket" component={Basket}/>
         </MainStack.Navigator>
     )

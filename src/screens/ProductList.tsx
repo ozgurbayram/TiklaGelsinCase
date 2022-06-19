@@ -1,6 +1,5 @@
-import { View, Text, Button, FlatList } from 'react-native'
+import { View, Text, Button, FlatList, StatusBar } from 'react-native'
 import React from 'react'
-import { useUser } from '../context/UserContext'
 import { getProducts } from '../utils/getProducts'
 import Loading from '../components/Loading'
 import Product from '../components/Product'
@@ -15,6 +14,7 @@ const ProductList = () => {
     if(!data){(<Loading/>)}
     return (
         <View style={{flex:1,backgroundColor:'#fff'}}>
+            <StatusBar barStyle={"dark-content"} backgroundColor="#fff"/>
             <FlatList
                 data={data}
                 renderItem={renderItem}
