@@ -79,6 +79,7 @@ const Login = () => {
                     <TextInput
                         ref={emailRef}
                         style={styles.input}
+                        keyboardType="email-address"
                         onChangeText={(e)=>{setEmail(e)}}
                         onEndEditing={()=>{
                             passwordRef.current?.focus()

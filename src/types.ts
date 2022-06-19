@@ -10,4 +10,14 @@ export type MainStackParamList = {
     ProductList:undefined
     Basket:undefined
 }
-export type MainStackProps = NativeStackScreenProps<MainStackParamList,'ProductList','Basket'>
+export type MainScreenProps = NativeStackScreenProps<MainStackParamList,'ProductList','Basket'>
+
+export type Product = {
+    id:number,
+    name:string,
+    price:number,
+    image:string,
+    discount:number,
+    ingredients:string[],
+    
+}
