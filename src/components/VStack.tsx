@@ -8,7 +8,9 @@ interface IVstack {
 const VStack = ({children}:IVstack) => {
     return (
         <View style={{display:'flex',flexDirection:'row'}}>
-            {children}
+            <>
+                {children}
+            </>
         </View>
     )
 }

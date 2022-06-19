@@ -8,7 +8,9 @@ interface IHStack {
 const HStack = ({children}:IHStack) => {
     return (
         <View style={{display:'flex',flexDirection:'row'}}>
-            {children}
+            <>
+                {children}
+            </>
         </View>
     )
 }

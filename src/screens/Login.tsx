@@ -7,6 +7,8 @@ import { validateEmail } from '../utils/validateEmail'
 import { brandColor } from '../constant'
 import { Alert } from 'react-native'
 import LoginHeader from '../components/LoginHeader'
+import { useUser } from '../context/UserContext'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Login = () => {
     const [buttonStatus, setButtonStatus] = useState<boolean>(false)
@@ -19,10 +21,12 @@ const Login = () => {
     // references
     const emailRef = useRef<TextInput|null>(null)
     const passwordRef = useRef<TextInput|null>(null)
-
+    // hooks 
+    const user = useUser()
     const login=()=>{
-        Alert.alert('Succes')   
-        console.log("succes");
+        if(email){
+            user?.userDispatch({type:'login',email:email})  
+        }
     }
     
     useEffect(() => {
@@ -40,7 +44,14 @@ const Login = () => {
             setButtonStatus(true)
         }
     }, [password])
-
+    useEffect(() => {
+        const getData=async()=>{
+            const data = await AsyncStorage.getItem('user')
+            console.log(data);
+        }
+        getData()
+    }, [])
+    
     if(loading){return(<Loading/>)}   
     return (
         <ScrollView style={{
@@ -82,10 +93,6 @@ const Login = () => {
                     <TextInput 
                         ref={passwordRef}
                         onChangeText={(e)=>{setPassword(e)}}
-                        onEndEditing={()=>{
-                            console.log(buttonStatus);
-                            
-                        }}
                         secureTextEntry
                         style={styles.input}
                         placeholder='Şifre'/>

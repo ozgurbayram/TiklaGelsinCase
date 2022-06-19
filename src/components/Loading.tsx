@@ -4,10 +4,18 @@ import React from 'react'
 const Loading = () => {
     return(
         <Modal transparent>
-            <ActivityIndicator 
-                size={"large"}
-                color="#333"
-            />
+            <View style={{
+                flex:1,
+                justifyContent:'center',
+                alignItems:'center',
+                backgroundColor:'#000',
+                opacity:0.4
+            }}>
+                <ActivityIndicator 
+                    size={"large"}
+                    color="#333"
+                    />
+            </View>
         </Modal>
     )
 }
