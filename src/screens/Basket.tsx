@@ -1,9 +1,10 @@
 import { View, Text, FlatList, StyleSheet, Alert } from 'react-native'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { useBasket } from '../context/BasketContext'
 import Product from '../components/Product'
 import AnimatedPressable from '../components/AnimatedPressable'
 import { brandColor } from '../constant'
+import * as Linking from 'expo-linking'
 
 const Basket = () => {
     const {basketState,basketDispatch} = useBasket()
@@ -27,8 +28,9 @@ const Basket = () => {
         ()=>{
             return calculateBasket()-calculateDiscount()
         },
-        [calculateBasket,calculateDiscount]
+        [calculateBasket]
     )
+
     const pay = ()=>{
         Alert.alert("Siparişiniz Hazırlanıyor, afiyet olsun :)")
         basketDispatch({type:'clear'})
@@ -38,6 +40,7 @@ const Basket = () => {
             <Product key={item.id} {...item} isList={false}/>
         )
     }
+       
     return (
         <View style={styles.container}>
             <FlatList
@@ -48,7 +51,7 @@ const Basket = () => {
                 <View style={styles.payDetails}>
                     <Text>Fiyat: {calculateBasket()}Tl</Text>
                     <Text>İndirim: {calculateDiscount()}Tl</Text>
-                    <Text>Toplam: {calculateTotal()-calculateDiscount()} Tl</Text>
+                    <Text>Toplam: {calculateTotal()} Tl</Text>
                 </View>
                 <AnimatedPressable
                     onPress={pay}

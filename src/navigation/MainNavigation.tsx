@@ -1,7 +1,6 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { MainStackParamList} from 'types'
+import { MainStackParamList} from '../types'
 import ProductList from '../screens/ProductList'
 import Basket from '../screens/Basket'
 import { LeftLogout, RightBasket } from '../components/ProductListHeader'

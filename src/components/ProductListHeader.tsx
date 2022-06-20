@@ -18,10 +18,12 @@ export const LeftLogout = ()=>{
                 onPress:()=>{
                     userDispatch({type:'logout'})
                 },
+                style:'destructive'
             },
             {
                 text:"Hayır",
-                onPress:()=>{}
+                onPress:()=>{},
+                style:'cancel'
             }
         ])
     }

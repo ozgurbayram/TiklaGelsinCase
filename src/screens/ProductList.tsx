@@ -27,21 +27,20 @@ const ProductList = () => {
         },
         [query],
     )
-    
-    useEffect(() => {
-        async function getInitial() {
-            const initUrl = await Linking.getInitialURL()
-            if(initUrl){
-                const obj = Linking.parse(initUrl)
-                const product = data[obj.queryParams.menuId]
-                basketDispatch({type:'add',product:{
-                    ...product,
-                    count:1
-                }})
-                navigation.navigate('Basket')
-            }
+    const redirect = (url)=>{
+        if(!url) return
+        const id = Linking.parse(url).queryParams['menuId']
+        if(id){
+            const product = data[id]
+            basketDispatch({type:'add',product:{
+                ...product,
+                count:1
+            }})
+            navigation.navigate('Basket')
         }
-        getInitial()
+    }
+    useEffect(() => {
+        Linking.getInitialURL().then(redirect)
     }, [])
     if(!data){(<Loading/>)}
     return (

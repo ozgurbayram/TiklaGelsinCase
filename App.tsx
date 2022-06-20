@@ -11,11 +11,18 @@ const App = ()=>{
         prefixes:[prefix],
         config:{
             screens:{
-                ProductList:"products",
-                Basket:"basket"
+                ProductList:{
+                    path:"products"
+                },    
+                Basket:{
+                    path:"basket",
+                    parse:{
+                        menuId:Number
+                    }
+                }
             }
         }
-    }    
+    }
     
     return(
         <>

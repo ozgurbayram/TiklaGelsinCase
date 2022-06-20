@@ -1,7 +1,6 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import AnimatedPressable from './AnimatedPressable'
-import VStack from './VStack'
 import { useBasket } from '../context/BasketContext'
 
 interface IProduct {
