@@ -1,14 +1,12 @@
-import { View, Text, TextInput, StyleSheet, Modal, ActivityIndicator, ScrollView } from 'react-native'
+import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import AnimatedPressable from '../components/AnimatedPressable'
 import { StatusBar } from 'expo-status-bar'
 import Loading from '../components/Loading'
 import { validateEmail } from '../utils/validateEmail'
 import { brandColor } from '../constant'
-import { Alert } from 'react-native'
 import LoginHeader from '../components/LoginHeader'
 import { useUser } from '../context/UserContext'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Login = () => {
     const [buttonStatus, setButtonStatus] = useState<boolean>(false)
@@ -44,13 +42,6 @@ const Login = () => {
             setButtonStatus(true)
         }
     }, [password])
-    useEffect(() => {
-        const getData=async()=>{
-            const data = await AsyncStorage.getItem('user')
-            console.log(data);
-        }
-        getData()
-    }, [])
     
     if(loading){return(<Loading/>)}   
     return (

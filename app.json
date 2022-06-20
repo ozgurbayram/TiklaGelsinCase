@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme":"tiklagelisn",
     "name": "TiklaGelsinCase",
     "slug": "TiklaGelsinCase",
     "version": "1.0.0",
