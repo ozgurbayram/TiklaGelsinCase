@@ -10,8 +10,8 @@ Simple food delivery app like Tıkla Gelsin
 * Expo Linking
 
 ## Demo
-| <img src="./media/process.gif" width="200">|<img src="./media/login.jpg" width="200"> |
-<img src="./media/list.jpg" width="200"> | <img src="./media/succes.jpg" width="200">|
+| <img src="./media/process.gif" width="250">|<img src="./media/login.jpg" width="250"> |
+<img src="./media/list.jpg" width="250"> | <img src="./media/succes.jpg" width="250">|
 
 
 ## Setup
