@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import Navigation from "./src/navigation"
 import {UserContextProvider} from './src/context/UserContext'
 import * as Linking from "expo-linking";

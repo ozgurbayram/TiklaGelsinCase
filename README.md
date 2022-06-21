@@ -27,8 +27,15 @@ Install packages
 yarn install
 ```
 
+Start the server
+```
+yarn start
+```
+
 ### Adding Product via Deep link 
 ``` console
 adb shell am start -a android.intent.action.VIEW -d "exp://192.168.1.107:19000/--/products?menuId=2"
 ```
-<img src="./media/deeplink.gif" width="200">
+>Change menuId parameter for different products
+
+* <img src="./media/deeplink.gif" width="200">

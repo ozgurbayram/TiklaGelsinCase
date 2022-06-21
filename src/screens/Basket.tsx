@@ -1,10 +1,9 @@
 import { View, Text, FlatList, StyleSheet, Alert } from 'react-native'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { useBasket } from '../context/BasketContext'
 import Product from '../components/Product'
 import AnimatedPressable from '../components/AnimatedPressable'
 import { brandColor } from '../constant'
-import * as Linking from 'expo-linking'
 
 const Basket = () => {
     const {basketState,basketDispatch} = useBasket()
@@ -12,7 +11,7 @@ const Basket = () => {
     
     const calculateBasket = useCallback(
         () => {
-            return basket.reduce((a,b)=>a+b.price*b.count,0)
+            return basket.reduce((a,b)=>a+b.price*(b.count?b.count:1),0)
         },
         [basket],
     )

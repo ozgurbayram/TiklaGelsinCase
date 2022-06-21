@@ -1,4 +1,4 @@
-import { View, FlatList, StatusBar, TextInput } from 'react-native'
+import { View, FlatList, StatusBar } from 'react-native'
 import React, { useCallback, useEffect, useState } from 'react'
 import { getProducts } from '../utils/getProducts'
 import Loading from '../components/Loading'
@@ -13,11 +13,13 @@ const ProductList = () => {
     const {basketDispatch} = useBasket()
     const [query, setQuery] = useState()
     const navigation = useNavigation()
+    
     const renderItem =(item)=>{
         return(
             <Product key={item.index} {...item.item} isList={true} />
         )
     }
+    
     const filterProducts = useCallback(
         (e:string) => {
             const filtered = data.filter((item)=>{
@@ -39,9 +41,11 @@ const ProductList = () => {
             navigation.navigate('Basket')
         }
     }
+
     useEffect(() => {
         Linking.getInitialURL().then(redirect)
     }, [])
+
     if(!data){(<Loading/>)}
     return (
         <View style={{flex:1,backgroundColor:'#fff'}}>

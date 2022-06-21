@@ -1,5 +1,5 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
-import React, { useEffect } from 'react'
+import React from 'react'
 import AnimatedPressable from './AnimatedPressable'
 import { useBasket } from '../context/BasketContext'
 
