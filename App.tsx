@@ -16,9 +16,6 @@ const App = ()=>{
                 },    
                 Basket:{
                     path:"basket",
-                    parse:{
-                        menuId:Number
-                    }
                 }
             }
         }

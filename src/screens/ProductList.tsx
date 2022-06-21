@@ -27,7 +27,7 @@ const ProductList = () => {
         },
         [query],
     )
-    const redirect = (url)=>{
+    const redirect = (url:string|null)=>{
         if(!url) return
         const id = Linking.parse(url).queryParams['menuId']
         if(id){
